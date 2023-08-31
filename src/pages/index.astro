@@ -1,9 +1,102 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ButtonGroup from "../components/ButtonGroup.astro";
+import * as Welcome from "../content/welcome.md";
 ---
 
 <Layout>
-  <main></main>
+  <main>
+    <section id="hero-section">
+      <div class="overlay"></div>
+      <div class="container">
+        <h1>JOIN US ON SUNDAY</h1>
+        <div class="no-margin">
+          <p>75 Railroad Street</p>
+          <p>Putnam, CT 06260</p>
+        </div>
+        <p>In-person and online @ 10 AM</p>
+        <ButtonGroup
+          style="bg-white"
+          buttons={[
+            { text: "Watch Live", href: "https://live.gvc.church/" },
+            { text: "I'm New", href: "https://gvc.church/im-new" },
+            { text: "Bulletin", href: "https://gvc.church/bulletin" },
+          ]}
+        />
+      </div>
+    </section>
+    <section id="welcome-section">
+      <div class="container">
+        <p id="welcome-text">{Welcome.rawContent()}</p>
+        <ButtonGroup
+          style="bg-white bd-black"
+          buttons={[
+            {
+              text: "Learn What We Believe",
+              href: "https://live.gvc.church/new-page",
+            },
+            {
+              text: "Meet Our Leaders",
+              href: "https://gvc.church/our-leaders",
+            },
+            {
+              text: "Plan Your Visit",
+              href: "https://gvc.church/what-to-expect-1",
+            },
+            {
+              text: "Take Your Next Step",
+              href: "https://gvc.church/next-steps",
+            },
+          ]}
+        />
+      </div>
+    </section>
+    <section id="image-carousel"></section>
+  </main>
 </Layout>
 
-<style></style>
+<style lang="scss">
+  #hero-section {
+    height: 100vh;
+    width: 100vw;
+    background: url("img/GVC Hero.jpg");
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    position: relative;
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.3);
+      position: absolute;
+      inset: 0;
+    }
+    .container {
+      z-index: 1;
+    }
+    h1 {
+      font-size: min(6rem, 12vw);
+      text-align: center;
+      margin-top: 0;
+    }
+    p {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  }
+  #welcome-section {
+    padding: 3rem;
+    #welcome-text {
+      font-size: clamp(1.25rem, 5vw, 2.5rem);
+      line-height: 1.4;
+    }
+  }
+  #image-carousel {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background-color: aqua;
+  }
+  .no-margin p {
+    margin: 0;
+  }
+</style>

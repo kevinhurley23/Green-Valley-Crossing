@@ -1,0 +1,67 @@
+---
+const { style, buttons } = Astro.props;
+const numButtons = buttons.length;
+---
+
+<div class={`button-group buttons-${numButtons}`}>
+  {
+    buttons.map((button) => (
+      <a class={`btn ${style}`} href={button.href}>
+        {button.text}
+      </a>
+    ))
+  }
+</div>
+
+<style lang="scss">
+  .button-group {
+    display: grid;
+    gap: 2rem;
+    justify-content: center;
+    grid-auto-rows: 1fr;
+    margin: 0 auto;
+    // background-color: rgba(94, 236, 255, 0.5);
+  }
+  .buttons-3 {
+    grid-template-columns: repeat(3, 300px);
+    @media screen and (max-width: 1200px) {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+    }
+  }
+  .buttons-4 {
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+    @media screen and (max-width: 900px) {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+    }
+  }
+  .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: min(1.8rem, 5vw);
+    transition: 0.25s linear;
+  }
+  .bg-white {
+    background-color: white;
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+  .bg-white-trans {
+    background-color: white;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.7);
+    }
+  }
+  .bd-black {
+    border: 3px solid black;
+  }
+</style>
