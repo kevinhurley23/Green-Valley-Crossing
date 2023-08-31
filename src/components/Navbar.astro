@@ -1,0 +1,107 @@
+---
+---
+
+<div id="navbar-background"></div>
+<div id="navbar-text">
+  <a href="/">Home</a>
+  <a href="/#welcome-section">Welcome</a>
+  <a href="/#contact-section">Contact Us</a>
+  <img src="img/GVC Logo.png" alt="Green Valley Crossing logo" id="logo" />
+  <a href="/our-leaders">About Us</a>
+  <a href="/what-to-expect">Plan Your Visit</a>
+  <a href="/connect">Connect</a>
+</div>
+
+<style lang="scss">
+  #navbar-background {
+    background-color: #435e0f;
+    position: fixed;
+    width: 100%;
+    z-index: 0;
+    height: 180px;
+  }
+  #navbar-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  #logo {
+    width: 300px;
+    @media screen and (max-width: 1150px) {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const logo = document.querySelector("#logo");
+  let width = logo.offsetWidth;
+  const initialWidth = width;
+  const background = document.querySelector("#navbar-background");
+  let height = background.offsetHeight;
+  const tall = "180px";
+  const short = "80px";
+  const time = 500;
+  let animationInProgress = false;
+
+  function hideLogo() {
+    animationInProgress = true;
+
+    const animation = logo.animate(
+      {
+        width: 0,
+        opacity: 0,
+      },
+      time
+    );
+    background.animate({ height: short }, time);
+    animation.addEventListener("finish", () => {
+      logo.style.width = "0px";
+      logo.style.opacity = 0;
+      background.style.height = short;
+    });
+    setTimeout(() => {
+      if (animationInProgress) {
+        logo.style.display = "none";
+      }
+    }, time * 0.4);
+  }
+
+  function showLogo() {
+    animationInProgress = false;
+
+    logo.style.display = "block";
+    const animation = logo.animate(
+      {
+        width: initialWidth + "px",
+        opacity: 1,
+      },
+      time
+    );
+    background.animate({ height: tall }, time);
+    animation.addEventListener("finish", () => {
+      logo.style.width = initialWidth + "px";
+      logo.style.opacity = 1;
+      background.style.height = tall;
+    });
+  }
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 0) {
+      hideLogo();
+    } else {
+      showLogo();
+    }
+  });
+</script>

@@ -8,21 +8,24 @@ import * as Welcome from "../content/welcome.md";
   <main>
     <section id="hero-section">
       <div class="overlay"></div>
-      <div class="container">
-        <h1>JOIN US ON SUNDAY</h1>
-        <div class="no-margin">
-          <p>75 Railroad Street</p>
-          <p>Putnam, CT 06260</p>
+      <div id="navbar-foreground"></div>
+      <div class="column">
+        <div class="container">
+          <h1>JOIN US ON SUNDAY</h1>
+          <div class="no-margin">
+            <p>75 Railroad Street</p>
+            <p>Putnam, CT 06260</p>
+          </div>
+          <p>In-person and online @ 10 AM</p>
+          <ButtonGroup
+            style="bg-white"
+            buttons={[
+              { text: "Watch Live", href: "https://live.gvc.church/" },
+              { text: "I'm New", href: "https://gvc.church/im-new" },
+              { text: "Bulletin", href: "https://gvc.church/bulletin" },
+            ]}
+          />
         </div>
-        <p>In-person and online @ 10 AM</p>
-        <ButtonGroup
-          style="bg-white"
-          buttons={[
-            { text: "Watch Live", href: "https://live.gvc.church/" },
-            { text: "I'm New", href: "https://gvc.church/im-new" },
-            { text: "Bulletin", href: "https://gvc.church/bulletin" },
-          ]}
-        />
       </div>
     </section>
     <section id="welcome-section">
@@ -58,18 +61,30 @@ import * as Welcome from "../content/welcome.md";
 <style lang="scss">
   #hero-section {
     height: 100vh;
-    width: 100vw;
     background: url("img/GVC Hero.jpg");
     background-position: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
     color: white;
     position: relative;
     .overlay {
       background-color: rgba(0, 0, 0, 0.3);
       position: absolute;
       inset: 0;
+    }
+    #navbar-foreground {
+      height: 80px;
+      width: 100%;
+      background-color: red;
+      position: fixed;
+      z-index: 2;
+    }
+    .column {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
     }
     .container {
       z-index: 1;
