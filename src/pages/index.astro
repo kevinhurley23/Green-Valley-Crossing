@@ -7,7 +7,6 @@ import * as Welcome from "../content/welcome.md";
 <Layout>
   <main>
     <section id="hero-section">
-      <div class="overlay"></div>
       <div id="navbar-foreground"></div>
       <div class="column">
         <div class="container">
@@ -59,26 +58,31 @@ import * as Welcome from "../content/welcome.md";
 </Layout>
 
 <style lang="scss">
+  @import "../styles/_variables.scss";
+
   #hero-section {
     height: 100vh;
-    background: url("img/GVC Hero.jpg");
+    background: url("img/GVC Hero dark.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
     color: white;
     position: relative;
-    .overlay {
-      background-color: rgba(0, 0, 0, 0.3);
-      position: absolute;
-      inset: 0;
-    }
     #navbar-foreground {
       height: 80px;
       width: 100%;
-      background-color: red;
-      position: fixed;
+      background: url("img/GVC Hero dark.jpg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      position: sticky;
+      top: 0;
       z-index: 2;
+      @media screen and (max-width: $tablet) {
+        // display: none;
+      }
     }
     .column {
       display: flex;

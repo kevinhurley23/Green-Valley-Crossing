@@ -21,6 +21,9 @@ const { title = "Green Valley Crossing" } = Astro.props;
       href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <script
+      src="https://kit.fontawesome.com/86e474c9b5.js"
+      crossorigin="anonymous"></script>
     <title>{title}</title>
   </head>
   <body>
@@ -30,11 +33,7 @@ const { title = "Green Valley Crossing" } = Astro.props;
 </html>
 <style is:global lang="scss">
   $accent: #435e0f;
-  :root {
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
-  }
+
   html {
     font-family: "Raleway", sans-serif;
   }
