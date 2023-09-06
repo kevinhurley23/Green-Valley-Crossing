@@ -1,16 +1,7 @@
-import { useSanityClient, groq } from "astro-sanity";
-
-//Sanity
-// export async function getArticles() {
-//   const query = groq`*[_type == "article"]`;
-//   const articles = await useSanityClient().fetch(query);
-//   return articles;
-// }
-
-//Strapi
+const endpoint = "https://gvc-cms.onrender.com/api/";
 export async function getArticle(title) {
   const response = await fetch(
-    "http://localhost:1337/api/articles?filters[title][$eqi]=" + title
+    endpoint + "articles?filters[title][$eqi]=" + title
   );
   const data = await response.json();
   const content = data.data[0].attributes.content;
@@ -18,7 +9,7 @@ export async function getArticle(title) {
 }
 
 export async function getBulletin() {
-  const response = await fetch("http://localhost:1337/api/bulletins");
+  const response = await fetch(endpoint + "bulletins");
   const data = await response.json();
 
   const dateStr = data.data[0].attributes.date;
@@ -31,7 +22,7 @@ export async function getBulletin() {
   };
   const formattedDate = new Intl.DateTimeFormat("en-US", options).format(date);
 
-  const serviceOrder = data.data[0].attributes.serviceOrder;
+  const serviceOrder = data.data[0].attributes.service_order;
   const announcements = data.data[0].attributes.announcements;
 
   return [formattedDate, serviceOrder, announcements];

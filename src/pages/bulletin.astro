@@ -1,0 +1,51 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getBulletin } from "../api";
+
+const content = await getBulletin();
+const date = content[0];
+const serviceOrder = content[1];
+const announcements = content[2];
+---
+<Layout>
+  <main>
+    <div class="container">
+      <h2 id="date">{date}</h2>
+      <img src="img/gvc black and white header image.jpg" alt="">
+      <div class="two-column">
+        <div id="service-order">
+          <h2>Order of Service</h2>
+          <div class="bulletin-text" set:html={serviceOrder}></div>
+        </div>
+        <div id="announcements">
+          <h2>Announcements</h2>
+          <div class="bulletin-text" set:html={announcements}></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style lang="scss">
+  @import "../styles/_variables.scss";
+
+  #date {
+    font-size: 3rem;
+    text-align: center;
+  }
+  img {
+    width: 100%;
+  }
+  .two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin: 4rem 0;
+    @media (max-width: $mobile) {
+      grid-template-columns: 1fr;
+    }
+  }
+  h2 {
+    font-size: 3rem;
+  }
+</style>

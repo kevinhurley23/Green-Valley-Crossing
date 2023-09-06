@@ -1,10 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ButtonGroup from "../components/ButtonGroup.astro";
-// import * as Welcome from "../content/welcome.md";
 import { getArticle } from "../api";
 
-// const welcome = await getArticle("welcome");
+const welcome = await getArticle("welcome");
 ---
 
 <Layout>
@@ -32,7 +31,8 @@ import { getArticle } from "../api";
     </section>
     <section id="welcome-section">
       <div class="container">
-        <div id="welcome-text"></div>
+        <div id="welcome-text" set:html={welcome}>
+        </div>
         <ButtonGroup
           style="bg-white bd-black"
           buttons={[
@@ -63,6 +63,9 @@ import { getArticle } from "../api";
 <style lang="scss">
   @import "../styles/_variables.scss";
 
+  main {
+    margin-top: 0;
+  }
   #hero-section {
     height: 100vh;
     background: url("img/GVC Hero dark.jpg");
@@ -122,31 +125,3 @@ import { getArticle } from "../api";
     margin: 0;
   }
 </style>
-
-<script>
-async function getArticle(title) {
-  const response = await fetch("http://localhost:1337/api/articles?filters[title][$eqi]=" + title);
-  const data = await response.json();
-  const content = data.data[0].attributes.content;
-  return content;
-}
-
-const welcome = await getArticle("welcome");
-document.querySelector("#welcome-text").innerHTML = welcome;
-
-// async function getBulletin() {
-//   const response = await fetch("http://localhost:1337/api/bulletins");
-//   const data = await response.json();
-
-//   const dateStr = data.data[0].attributes.date;
-//   const date = new Date(dateStr);
-//   const options = { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' };
-//   const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
-  
-//   const serviceOrder = data.data[0].attributes.serviceOrder;
-//   const announcements = data.data[0].attributes.announcements;
-
-//   return [formattedDate, serviceOrder, announcements];
-// }
-
-</script>
