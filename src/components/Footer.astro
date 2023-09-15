@@ -1,0 +1,109 @@
+<div id="footer-top">
+  <div id="social-buttons" class="row">
+    <a href="http://www.facebook.com/greenvalleycrossing"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="http://instagram.com/thecrossingct"><i class="fa-brands fa-instagram"></i></a>
+    <a href="http://vimeo.com/greenvalleycrossing"><i class="fa-brands fa-vimeo-v"></i></a>
+    <a href="mailto:info@gvc.life"><i class="fa-regular fa-envelope"></i></a>
+  </div>
+  <div>
+    <p>Green Valley Crossing is an autonomous church in partnership with the following regional networks.</p>
+    <p>We are proud of our heritage and partnership with the SBC.</p>
+  </div>
+  <div id="partners" class="row">
+    <a href="http://www.namb.net/">
+      <img src="img/send-network.png" alt="send network logo">
+    </a>
+    <a href="http://www.bcne.net/">
+      <img src="img/bcne.png" alt="baptist convention of new england logo">
+    </a>
+  </div>
+</div>
+<div id="footer-bottom">
+  <div id="footer-nav" class="row">
+    <a href="">Next Steps</a>
+    <a href="">Salvation</a>
+    <a href="">Need Assistance?</a>
+    <a href="">Watch Live</a>
+    <a href="">Blog</a>
+    <a href="">Sermons</a>
+  </div>
+  <p>Copyright 2017 - Green Valley Crossing, Inc.</p>
+</div>
+
+<style lang="scss">
+  @import "../styles/_variables.scss";
+
+  .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #footer-top {
+    background-color: $gray;
+    padding: 3rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    #social-buttons {
+      gap: 20px;
+        a {
+        color: $lgray;
+        border: 2px solid black;
+        border-radius: 50%;
+        font-size: 25px;
+        padding: 10px;
+        width: 25px;
+        height: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        transition: 0.5s;
+        &:hover {
+          color: $dgray;
+          background-color: white;
+        }
+      }
+    }
+    p {
+      color: $lgray;
+      text-align: center;
+      margin: 10px 0;
+    }
+    #partners {
+      gap: 40px;
+      @media (max-width: $mobile) {
+        flex-direction: column;
+      }
+      img {
+        width: 200px;
+      }
+    }
+  }
+  #footer-bottom {
+    background-color: $dgray;
+    padding: 3rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    #footer-nav {
+      gap: 30px;
+      flex-wrap: wrap;
+      a {
+        color: white;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-weight: 500;
+        &:hover {
+          color: $lgray;
+        }
+      }
+    }
+    p {
+      color: $lgray;
+      text-align: center;
+    }
+  }
+</style>

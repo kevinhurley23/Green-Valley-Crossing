@@ -56,7 +56,9 @@ const welcome = await getArticle("welcome");
         />
       </div>
     </section>
-    <section id="image-carousel"></section>
+    <section id="image-carousel">
+      <img src="img/home-carousel/IMG_2117.jpeg" alt="">
+    </section>
   </main>
 </Layout>
 
@@ -118,8 +120,12 @@ const welcome = await getArticle("welcome");
   }
   #image-carousel {
     width: 100%;
-    aspect-ratio: 16/9;
-    background-color: aqua;
+    box-sizing: border-box;
+    img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
   }
   .no-margin p {
     margin: 0;

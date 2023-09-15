@@ -7,7 +7,7 @@ const date = content[0];
 const serviceOrder = content[1];
 const announcements = content[2];
 ---
-<Layout>
+<Layout title="Bulletin - Green Valley Crossing">
   <main>
     <div class="container">
       <h2 id="date">{date}</h2>
@@ -46,6 +46,6 @@ const announcements = content[2];
     }
   }
   h2 {
-    font-size: 3rem;
+    font-size: min(3rem, 9vw);
   }
 </style>
