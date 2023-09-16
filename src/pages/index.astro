@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import ButtonGroup from "../components/ButtonGroup.astro";
 import { getArticle } from "../api";
 
-const welcome = await getArticle("welcome");
+// const welcome = await getArticle("welcome");
 ---
 
 <Layout>
@@ -31,7 +31,7 @@ const welcome = await getArticle("welcome");
     </section>
     <section id="welcome-section">
       <div class="container">
-        <div id="welcome-text" set:html={welcome}>
+        <!-- <div id="welcome-text" set:html={welcome}> -->
         </div>
         <ButtonGroup
           style="bg-white bd-black"

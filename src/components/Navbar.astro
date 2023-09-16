@@ -9,9 +9,37 @@ const shortNav = 80;
   <a href="/#welcome-section">Welcome</a>
   <a href="/#contact-section">Contact Us</a>
   <img src="img/GVC Logo.png" alt="Green Valley Crossing logo" id="logo" />
-  <a href="/our-story">About Us</a>
-  <a href="/what-to-expect">Plan Your Visit</a>
-  <a href="/bulletin">Connect</a>
+  <div class="folder">
+    <a href="/our-story">About Us</a>
+    <div class="sub-menu">
+      <a href="">Our Leaders</a>
+      <a href="">Our Story</a>
+      <a href="">Our Beliefs</a>
+      <a href="">Our Mission</a>
+    </div>
+  </div>
+  <div class="folder">
+    <a href="">Plan Your Visit</a>
+    <div class="sub-menu">
+      <a href="">What to Expect</a>
+      <a href="">Crossing Kids</a>
+      <a href="">Register for Check-In</a>
+    </div>
+  </div>
+  <div class="folder">
+    <a href="/bulletin">Connect</a>
+    <div class="sub-menu">
+      <a href="">I'm New</a>
+      <a href="">Prayer Requests</a>
+      <a href="">Events</a>
+      <a href="">Groups</a>
+      <a href="">Women</a>
+      <a href="">Giving</a>
+      <a href="">Bulletin</a>
+      <a href="">Sermons</a>
+      <a href="">Blog</a>
+    </div>
+  </div>
 </div>
 <div id="mobile-toggle-container">
   <div class="container">
@@ -23,17 +51,55 @@ const shortNav = 80;
     <a href="/">Home</a>
     <a href="/#welcome-section">Welcome</a>
     <a href="/#contact-section">Contact Us</a>
-    <a href="/our-story">About Us</a>
-    <a href="/what-to-expect">Plan Your Visit</a>
-    <a href="/connect">Connect</a>
+    <div class="folder">
+      <p>About Us</p>
+      <p class="caret">&#62;</p>
+      <div class="sub-menu" style="display: none;">
+        <a href="">Our Leaders</a>
+        <a href="">Our Story</a>
+        <a href="">Our Beliefs</a>
+        <a href="">Our Mission</a>
+      </div>
+    </div>
+    <div class="folder">
+      <p>Plan Your Visit</p>
+      <p class="caret">&#62;</p>
+      <div class="sub-menu" style="display: none;">
+        <a href="">What to Expect</a>
+        <a href="">Crossing Kids</a>
+        <a href="">Register for Check-In</a>
+      </div>
+    </div>
+    <div class="folder">
+      <p>Connect</p>
+      <p class="caret">&#62;</p>
+      <div class="sub-menu" style="display: none;">
+        <a href="">I'm New</a>
+        <a href="">Prayer Requests</a>
+        <a href="">Events</a>
+        <a href="">Groups</a>
+        <a href="">Women</a>
+        <a href="">Giving</a>
+        <a href="">Bulletin</a>
+        <a href="">Sermons</a>
+        <a href="">Blog</a>
+      </div>
+    </div>
   </div>
 </div>
 
 <style lang="scss">
   @import "../styles/_variables.scss";
 
+  a, p {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  
   #navbar-background {
-    background-color: $gray;
+    background-color: $dgray;
     position: fixed;
     top: 0;
     width: 100%;
@@ -53,10 +119,39 @@ const shortNav = 80;
     @media screen and (max-width: $mobile) {
       display: none;
     }
+    a:hover {
+      color: $lgray;
+    }
+    a:after {
+        content: "";
+        height: 5px;
+        display: block;
+        visibility: hidden;
+      }
     #logo {
       width: 300px;
       @media screen and (max-width: $tablet) {
         display: none;
+      }
+    }
+    .sub-menu {
+      display: none;
+      position: absolute;
+      left: -10px;
+      background-color: $dgray;
+      width: auto;
+      padding: 5px 15px 15px;
+      a {
+        display: block;
+        margin-top: 10px;
+        width: 100%;
+        white-space: nowrap;
+      }
+    }
+    .folder {
+      position: relative;
+      &:hover .sub-menu {
+        display: block;
       }
     }
   }
@@ -73,7 +168,7 @@ const shortNav = 80;
   #mobile-nav {
     position: fixed;
     z-index: 20;
-    background: linear-gradient($gray, $dgray);
+    background: linear-gradient($dgray, $gray);
     width: 100%;
     padding: 3rem 0;
     @media screen and (min-width: $mobile) {
@@ -82,16 +177,27 @@ const shortNav = 80;
     .container {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 2rem;
     }
-    a {
+    a, p {
       font-size: 2rem;
     }
-  }
-  a {
-    color: white;
-    text-decoration: none;
-    text-transform: uppercase;
+    p {
+      margin: 0;
+      display: inline;
+    }
+    .caret {
+      margin-left: 10px;
+      display: inline-block;
+      transition: 0.3s;
+    }
+    .sub-menu {
+      a {
+        display: block;
+        font-size: 1.5rem;
+        margin-top: 0.5rem;
+      }
+    }
   }
 </style>
 
@@ -101,6 +207,7 @@ const shortNav = 80;
   const toggle = document.querySelector("#mobile-toggle");
   const mobileNav = document.querySelector("#mobile-nav");
   const mobileNavHeight = mobileNav.offsetHeight;
+  const folders = document.querySelectorAll("#mobile-nav .folder")
   const time = 300;
   let animationInProgress = false;
   let menuIsOpen = false;
@@ -164,6 +271,7 @@ const shortNav = 80;
   });
 
   toggle.addEventListener("click", function () {
+    console.log('clicked');
     if (menuIsOpen) {
       menuIsOpen = false;
       toggle.classList.remove("fa-bars");
@@ -171,15 +279,31 @@ const shortNav = 80;
       mobileNav.animate({ top: shortNav + "px" }, time);
       setTimeout(() => {
         mobileNav.style.top = shortNav + "px";
+        // background.style.zIndex = "0";
       }, time * 0.9);
     } else {
       menuIsOpen = true;
       toggle.classList.remove("fa-x");
       toggle.classList.add("fa-bars");
+      // background.style.zIndex = "5";
       mobileNav.animate({ top: -mobileNavHeight - shortNav + "px" }, time);
       setTimeout(() => {
         mobileNav.style.top = -mobileNavHeight - shortNav + "px";
       }, time * 0.9);
     }
+  });
+
+  folders.forEach((folder) => {
+    folder.addEventListener('click', function() {
+      const submenu = this.querySelector('.sub-menu');
+      const caret = this.querySelector('.caret');
+      if (submenu.style.display === "none") {
+        submenu.style.display = "block";
+        caret.style.transform = "rotate(90deg)";
+      } else {
+        submenu.style.display = "none";
+        caret.style.transform = "rotate(0deg)";
+      }
+    });
   });
 </script>

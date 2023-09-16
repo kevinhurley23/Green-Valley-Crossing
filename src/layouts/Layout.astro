@@ -34,14 +34,12 @@ const { title = "Green Valley Crossing" } = Astro.props;
   </body>
 </html>
 <style is:global lang="scss">
-  $accent: #435e0f;
 
   html {
     font-family: "Raleway", sans-serif;
   }
   body {
     margin: 0;
-    // position: relative;
   }
   main {
     margin-top: 280px;
@@ -49,13 +47,5 @@ const { title = "Green Valley Crossing" } = Astro.props;
   .container {
     width: min(1200px, 80vw);
     margin: 0 auto;
-  }
-  .bulletin-text {
-    h3 {
-      font-size: min(2rem, 7vw);
-      margin-block-start: 3rem;
-      margin-block-end: 1rem;
-      word-wrap: break-word;
-    }
   }
 </style>
