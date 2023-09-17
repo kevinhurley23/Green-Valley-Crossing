@@ -3,13 +3,13 @@ import Layout from "../layouts/Layout.astro";
 import ButtonGroup from "../components/ButtonGroup.astro";
 import { getArticle } from "../api";
 
-// const welcome = await getArticle("welcome");
+const welcome = await getArticle("welcome");
 ---
 
 <Layout>
   <main>
-    <section id="hero-section">
-      <div id="navbar-foreground"></div>
+    <section id="hero-section" style="background-image: url('img/GVC Hero dark.jpg')">
+      <div id="navbar-foreground" style="background-image: url('img/GVC Hero dark.jpg')"></div>
       <div class="column">
         <div class="container">
           <h1>JOIN US ON SUNDAY</h1>
@@ -31,7 +31,7 @@ import { getArticle } from "../api";
     </section>
     <section id="welcome-section">
       <div class="container">
-        <!-- <div id="welcome-text" set:html={welcome}> -->
+        <div id="welcome-text" set:html={welcome}>
         </div>
         <ButtonGroup
           style="bg-white bd-black"
@@ -70,7 +70,7 @@ import { getArticle } from "../api";
   }
   #hero-section {
     height: 100vh;
-    background: url("img/GVC Hero dark.jpg");
+    // background: url("img/GVC Hero dark.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -80,7 +80,7 @@ import { getArticle } from "../api";
     #navbar-foreground {
       height: 80px;
       width: 100%;
-      background: url("img/GVC Hero dark.jpg");
+      // background: url("img/GVC Hero dark.jpg");
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
