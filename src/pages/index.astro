@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ButtonGroup from "../components/ButtonGroup.astro";
+import Carousel from "../components/Carousel.astro";
 import { getArticle } from "../api";
 
 const welcome = await getArticle("welcome");
@@ -62,9 +63,14 @@ const welcome = await getArticle("welcome");
         />
       </div>
     </section>
-    <section id="image-carousel">
-      <img src="img/home-carousel/IMG_2117.jpeg" alt="" />
-    </section>
+    <Carousel
+      images={[
+        "/img/home-carousel/IMG_0603.jpeg",
+        "/img/home-carousel/IMG_2097.jpeg",
+        "/img/home-carousel/IMG_2112.jpeg",
+        "/img/home-carousel/IMG_2117.jpeg",
+      ]}
+    />
   </main>
 </Layout>
 
