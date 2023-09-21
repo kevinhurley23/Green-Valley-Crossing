@@ -8,8 +8,15 @@ const welcome = await getArticle("welcome");
 
 <Layout>
   <main>
-    <section id="hero-section" style="background-image: url('img/GVC Hero dark.jpg')">
-      <div id="navbar-foreground" style="background-image: url('img/GVC Hero dark.jpg')"></div>
+    <section
+      id="hero-section"
+      style="background-image: url('img/GVC Hero dark.jpg')"
+    >
+      <div
+        id="navbar-foreground"
+        style="background-image: url('img/GVC Hero dark.jpg')"
+      >
+      </div>
       <div class="column">
         <div class="container">
           <h1>JOIN US ON SUNDAY</h1>
@@ -31,8 +38,7 @@ const welcome = await getArticle("welcome");
     </section>
     <section id="welcome-section">
       <div class="container">
-        <div id="welcome-text" set:html={welcome}>
-        </div>
+        <div id="welcome-text" set:html={welcome} />
         <ButtonGroup
           style="bg-white bd-black"
           buttons={[
@@ -57,7 +63,7 @@ const welcome = await getArticle("welcome");
       </div>
     </section>
     <section id="image-carousel">
-      <img src="img/home-carousel/IMG_2117.jpeg" alt="">
+      <img src="img/home-carousel/IMG_2117.jpeg" alt="" />
     </section>
   </main>
 </Layout>
@@ -70,7 +76,6 @@ const welcome = await getArticle("welcome");
   }
   #hero-section {
     height: 100vh;
-    // background: url("img/GVC Hero dark.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -80,7 +85,6 @@ const welcome = await getArticle("welcome");
     #navbar-foreground {
       height: 80px;
       width: 100%;
-      // background: url("img/GVC Hero dark.jpg");
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -88,8 +92,7 @@ const welcome = await getArticle("welcome");
       position: sticky;
       top: 0;
       z-index: 2;
-      @media screen and (max-width: $tablet) {
-        // display: none;
+      &.gray {
       }
     }
     .column {
