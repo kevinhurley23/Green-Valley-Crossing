@@ -112,43 +112,41 @@ const { images } = Astro.props;
   arrows.forEach((arrow) => {
     arrow.addEventListener("click", () => {
       const offset = arrow.dataset.carouselArrow === "next" ? 1 : -1;
-      changeSlide(offset);
+      advanceSlide(offset);
     });
   });
 
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
-      const newIndex = button.dataset.slide;
-      const activeSlide = document.querySelector(".slide[data-active]");
-      const activeButton = document.querySelector(".slide-selector[data-active]");
-
-      slides[newIndex].dataset.active = true;
-      delete activeSlide.dataset.active;
-
-      buttons[newIndex].dataset.active = true;
-      if (activeButton) {
-        delete activeButton.dataset.active;
-      }
+      const index = button.dataset.slide;
+      changeSlide(index);
     })
   })
 
-  function changeSlide(offset) {
+  function advanceSlide(offset) {
+    const activeSlide = document.querySelector(".slide[data-active]");
+    
+    let index = [...slides].indexOf(activeSlide) + offset;
+    if (index < 0) index = slides.length - 1;
+    if (index >= slides.length) index = 0;
+
+    changeSlide(index)
+  }
+
+  function changeSlide(index) {
     const activeSlide = document.querySelector(".slide[data-active]");
     const activeButton = document.querySelector(".slide-selector[data-active]");
-    let newIndex = [...slides].indexOf(activeSlide) + offset;
-    if (newIndex < 0) newIndex = slides.length - 1;
-    if (newIndex >= slides.length) newIndex = 0;
 
-    slides[newIndex].dataset.active = true;
+    slides[index].dataset.active = true;
     delete activeSlide.dataset.active;
 
-    buttons[newIndex].dataset.active = true;
+    buttons[index].dataset.active = true;
     if (activeButton) {
       delete activeButton.dataset.active;
     }
   }
 
   setInterval(() => {
-    changeSlide(1);
+    advanceSlide(1);
   }, 7000);
 </script>
