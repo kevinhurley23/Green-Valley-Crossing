@@ -2,9 +2,11 @@
 import Layout from "../layouts/Layout.astro";
 import ButtonGroup from "../components/ButtonGroup.astro";
 import Carousel from "../components/Carousel.astro";
-import { getArticle } from "../api";
+import { getArticle, getImages } from "../api";
+import { getImage } from "astro:assets";
 
 const welcome = await getArticle("welcome");
+const homeCarousel = await getImages("home-carousel")
 ---
 
 <Layout>
@@ -63,14 +65,7 @@ const welcome = await getArticle("welcome");
         />
       </div>
     </section>
-    <Carousel
-      images={[
-        "/img/home-carousel/IMG_0603.jpeg",
-        "/img/home-carousel/IMG_2097.jpeg",
-        "/img/home-carousel/IMG_2112.jpeg",
-        "/img/home-carousel/IMG_2117.jpeg",
-      ]}
-    />
+    <Carousel images={homeCarousel} />
   </main>
 </Layout>
 
@@ -78,7 +73,8 @@ const welcome = await getArticle("welcome");
   @import "../styles/_variables.scss";
 
   main {
-    margin-top: 0;
+    margin: 0;
+    padding: 0;
   }
   #hero-section {
     height: 100vh;
@@ -97,7 +93,7 @@ const welcome = await getArticle("welcome");
       background-attachment: fixed;
       position: sticky;
       top: 0;
-      z-index: 2;
+      z-index: 3;
       &.gray {
       }
     }

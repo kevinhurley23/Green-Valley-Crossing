@@ -1,0 +1,15 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getArticle } from "../api";
+
+const content = await getArticle("our-mission");
+---
+
+<Layout title="Our Story - Green Valley Crossing">
+  <main>
+    <div class="container default-text">
+      <h1>Our Mission</h1>
+      <div set:html={content}></div>
+    </div>
+  </main>
+</Layout>

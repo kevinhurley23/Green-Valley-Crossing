@@ -34,18 +34,39 @@ const { title = "Green Valley Crossing" } = Astro.props;
   </body>
 </html>
 <style is:global lang="scss">
+  @import "../styles/_variables.scss";
 
   html {
     font-family: "Raleway", sans-serif;
+    background-color: $dgray;
   }
   body {
     margin: 0;
+    background-color: white;
   }
   main {
-    margin-top: 280px;
+    padding-top: 240px;
+    margin-bottom: 180px;
+    @media screen and (max-width: $tablet) {
+      padding-top: 120px;
+    }
   }
   .container {
-    width: min(1200px, 80vw);
+    width: min(1100px, 80vw);
     margin: 0 auto;
+  }
+  .default-text {
+    h1 {
+      font-size: 3rem;
+      text-align: center;
+    }
+    p {
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+    li {
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
   }
 </style>

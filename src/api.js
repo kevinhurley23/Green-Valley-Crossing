@@ -20,7 +20,7 @@ export async function getArticle(title) {
   try {
     const response = await fetchWithTimeout(
       endpoint + "articles?filters[title][$eqi]=" + title,
-      { timeout: 15000 }
+      { timeout: 7000 }
     );
     const data = await response.json();
     const content = data.data[0].attributes.content;
@@ -34,7 +34,7 @@ export async function getArticle(title) {
 export async function getBulletin() {
   try {
     const response = await fetchWithTimeout(endpoint + "bulletins", {
-      timeout: 15000,
+      timeout: 7000,
     });
     const data = await response.json();
 
@@ -57,5 +57,29 @@ export async function getBulletin() {
   } catch (error) {
     console.error("Error fetching bulletin:", error);
     return `<p class="error-message">The requested resource could not be loaded<p>`;
+  }
+}
+
+export async function getImages(title) {
+  try {
+    const response = await fetchWithTimeout(
+      endpoint + "photo-albums?populate[0]=images",
+      {
+        timeout: 7000,
+      }
+    );
+    const responseJson = await response.json();
+    const allAlbums = responseJson.data;
+    const targetAlbum = allAlbums.find(
+      (object) => object.attributes.title == title
+    );
+    const imageDataArray = targetAlbum.attributes.images.data;
+    const imagesArray = imageDataArray.map(
+      (item) => "https://gvc-cms.onrender.com" + item.attributes.url
+    );
+
+    return imagesArray;
+  } catch (error) {
+    console.error("Error fetching images:", error);
   }
 }

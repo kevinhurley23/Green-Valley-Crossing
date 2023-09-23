@@ -8,14 +8,14 @@ const shortNav = 80;
   <a href="/">Home</a>
   <a href="/#welcome-section">Welcome</a>
   <a href="/#contact-section">Contact Us</a>
-  <img src="img/GVC Logo.png" alt="Green Valley Crossing logo" id="logo" />
+  <a href="/" class="nav-img-link"><img src="img/GVC Logo.png" alt="Green Valley Crossing logo" id="logo" /></a>
   <div class="folder">
     <a href="/our-story">About Us</a>
     <div class="sub-menu">
-      <a href="">Our Leaders</a>
-      <a href="">Our Story</a>
-      <a href="">Our Beliefs</a>
-      <a href="">Our Mission</a>
+      <a href="/our-leaders">Our Leaders</a>
+      <a href="/our-story">Our Story</a>
+      <a href="/our-beliefs">Our Beliefs</a>
+      <a href="/our-mission">Our Mission</a>
     </div>
   </div>
   <div class="folder">
@@ -56,8 +56,8 @@ const shortNav = 80;
       <p class="caret">&#62;</p>
       <div class="sub-menu" style="display: none;">
         <a href="">Our Leaders</a>
-        <a href="">Our Story</a>
-        <a href="">Our Beliefs</a>
+        <a href="/our-story">Our Story</a>
+        <a href="/our-beliefs">Our Beliefs</a>
         <a href="">Our Mission</a>
       </div>
     </div>
@@ -205,6 +205,7 @@ const shortNav = 80;
 
 <script define:vars={{ shortNav, tallNav }}>
   const logo = document.querySelector("#logo");
+  const logoLink = document.querySelector(".nav-img-link")
   const background = document.querySelector("#navbar-background");
   const toggle = document.querySelector("#mobile-toggle");
   const mobileNav = document.querySelector("#mobile-nav");
@@ -233,11 +234,13 @@ const shortNav = 80;
     animation.addEventListener("finish", () => {
       logo.style.width = "0px";
       logo.style.opacity = 0;
+      
       background.style.height = shortNav + "px";
     });
     setTimeout(() => {
       if (animationInProgress) {
         logo.style.display = "none";
+        logoLink.style.display = "none";
       }
     }, time * 0.5);
   }
@@ -247,6 +250,7 @@ const shortNav = 80;
       animationInProgress = false;
 
       logo.style.display = "block";
+      logoLink.style.display = "block";
       const animation = logo.animate(
         {
           width: "300px",
