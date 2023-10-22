@@ -1,4 +1,5 @@
-const endpoint = "https://gvc-cms.onrender.com/api/";
+// const endpoint = "https://gvc-cms.onrender.com/api/";
+const endpoint = "http://localhost:1337/api/";
 
 function fetchWithTimeout(resource, options) {
   const { timeout = 7000 } = options;
@@ -74,9 +75,11 @@ export async function getImages(title) {
       (object) => object.attributes.title == title
     );
     const imageDataArray = targetAlbum.attributes.images.data;
-    const imagesArray = imageDataArray.map(
-      (item) => "https://gvc-cms.onrender.com" + item.attributes.url
-    );
+    if (imageDataArray) {
+      const imagesArray = imageDataArray.map(
+        (item) => "https://gvc-cms.onrender.com" + item.attributes.url
+      );
+    }
 
     return imagesArray;
   } catch (error) {

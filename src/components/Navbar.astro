@@ -27,15 +27,15 @@ const shortNav = 80;
     </div>
   </div>
   <div class="folder">
-    <a href="/bulletin">Connect</a>
+    <a href="/im-new">Connect</a>
     <div class="sub-menu">
-      <a href="">I'm New</a>
+      <a href="im-new">I'm New</a>
       <a href="">Prayer Requests</a>
       <a href="">Events</a>
       <a href="">Groups</a>
       <a href="">Women</a>
       <a href="">Giving</a>
-      <a href="">Bulletin</a>
+      <a href="/bulletin">Bulletin</a>
       <a href="">Sermons</a>
       <a href="">Blog</a>
     </div>
@@ -74,13 +74,13 @@ const shortNav = 80;
       <p>Connect</p>
       <p class="caret">&#62;</p>
       <div class="sub-menu" style="display: none;">
-        <a href="">I'm New</a>
+        <a href="im-new">I'm New</a>
         <a href="">Prayer Requests</a>
         <a href="">Events</a>
         <a href="">Groups</a>
         <a href="">Women</a>
         <a href="">Giving</a>
-        <a href="">Bulletin</a>
+        <a href="/bulletin">Bulletin</a>
         <a href="">Sermons</a>
         <a href="">Blog</a>
       </div>
@@ -100,7 +100,7 @@ const shortNav = 80;
   }
 
   #navbar-background {
-    background-color: $dgray;
+    background-color: $gray5;
     position: fixed;
     top: 0;
     width: 100%;
@@ -121,7 +121,7 @@ const shortNav = 80;
       display: none;
     }
     a:hover {
-      color: $lgray;
+      color: $gray2;
     }
     a:after {
       content: "";
@@ -139,7 +139,7 @@ const shortNav = 80;
       display: none;
       position: absolute;
       left: -10px;
-      background-color: $dgray;
+      background-color: $gray5;
       width: auto;
       padding: 5px 15px 15px;
       a {
@@ -169,7 +169,7 @@ const shortNav = 80;
   #mobile-nav {
     position: fixed;
     z-index: 20;
-    background: linear-gradient($dgray, $gray);
+    background: linear-gradient($gray5, $gray4);
     width: 100%;
     padding: 3rem 0;
     @media screen and (min-width: $mobile) {

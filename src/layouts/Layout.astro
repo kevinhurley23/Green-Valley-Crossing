@@ -38,7 +38,7 @@ const { title = "Green Valley Crossing" } = Astro.props;
 
   html {
     font-family: "Raleway", sans-serif;
-    background-color: $dgray;
+    background-color: $gray5;
   }
   body {
     margin: 0;
@@ -54,6 +54,14 @@ const { title = "Green Valley Crossing" } = Astro.props;
   .container {
     width: min(1100px, 80vw);
     margin: 0 auto;
+    img {
+      max-width: 100%;
+    }
+  }
+  .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .default-text {
     h1 {
@@ -61,6 +69,7 @@ const { title = "Green Valley Crossing" } = Astro.props;
       text-align: center;
     }
     p {
+      font-size: 1.2rem;
       margin-bottom: 2rem;
       line-height: 1.5;
     }

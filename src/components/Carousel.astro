@@ -2,30 +2,32 @@
 const { images } = Astro.props;
 ---
 
-<section class="image-carousel">
-  <i class="fa-solid fa-chevron-left prev" data-carousel-arrow="prev"></i>
-  <i class="fa-solid fa-chevron-right next" data-carousel-arrow="next"></i>
-  <ul>
-    {
-      images.map((image, id) => (
-        <li class="slide" data-active={id === 0 ? true : undefined}>
-          <img src={`${image}`} />
-        </li>
-      ))
-    }
-  </ul>
-  <div class="slide-buttons row">
-    {
-      images.map((image, id) => (
-        <span
-          class="slide-selector"
-          data-slide={id}
-          data-active={id === 0 ? true : undefined}
-        />
-      ))
-    }
-  </div>
-</section>
+{images && 
+  <section class="image-carousel">
+    <i class="fa-solid fa-chevron-left prev" data-carousel-arrow="prev"></i>
+    <i class="fa-solid fa-chevron-right next" data-carousel-arrow="next"></i>
+    <ul>
+      {
+        images.map((image, id) => (
+          <li class="slide" data-active={id === 0 ? true : undefined}>
+            <img src={`${image}`} />
+          </li>
+        ))
+      }
+    </ul>
+    <div class="slide-buttons row">
+      {
+        images.map((image, id) => (
+          <span
+            class="slide-selector"
+            data-slide={id}
+            data-active={id === 0 ? true : undefined}
+          />
+        ))
+      }
+    </div>
+  </section>
+}
 
 <style lang="scss">
   $fade: 500ms;
@@ -104,6 +106,7 @@ const { images } = Astro.props;
   }
 </style>
 
+{images && (
 <script>
   const slides = document.querySelectorAll("li");
   const arrows = document.querySelectorAll("[data-carousel-arrow]");
@@ -150,3 +153,4 @@ const { images } = Astro.props;
     advanceSlide(1);
   }, 7000);
 </script>
+)}

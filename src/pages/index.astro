@@ -3,7 +3,6 @@ import Layout from "../layouts/Layout.astro";
 import ButtonGroup from "../components/ButtonGroup.astro";
 import Carousel from "../components/Carousel.astro";
 import { getArticle, getImages } from "../api";
-import { getImage } from "astro:assets";
 
 const welcome = await getArticle("welcome");
 const homeCarousel = await getImages("home-carousel")
@@ -32,8 +31,8 @@ const homeCarousel = await getImages("home-carousel")
             style="bg-white"
             buttons={[
               { text: "Watch Live", href: "https://live.gvc.church/" },
-              { text: "I'm New", href: "https://gvc.church/im-new" },
-              { text: "Bulletin", href: "https://gvc.church/bulletin" },
+              { text: "I'm New", href: "/im-new" },
+              { text: "Bulletin", href: "/bulletin" },
             ]}
           />
         </div>
@@ -47,19 +46,19 @@ const homeCarousel = await getImages("home-carousel")
           buttons={[
             {
               text: "Learn What We Believe",
-              href: "https://live.gvc.church/new-page",
+              href: "/our-beliefs",
             },
             {
               text: "Meet Our Leaders",
-              href: "https://gvc.church/our-leaders",
+              href: "/our-leaders",
             },
             {
               text: "Plan Your Visit",
-              href: "https://gvc.church/what-to-expect-1",
+              href: "/what-to-expect",
             },
             {
               text: "Take Your Next Step",
-              href: "https://gvc.church/next-steps",
+              href: "/next-steps",
             },
           ]}
         />
@@ -134,5 +133,11 @@ const homeCarousel = await getImages("home-carousel")
   }
   .no-margin p {
     margin: 0;
+  }
+</style>
+
+<style is:global lang="scss">
+  #welcome-section .error-message {
+    display: none;
   }
 </style>
