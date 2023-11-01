@@ -1,27 +1,10 @@
 // const endpoint = "https://gvc-cms.onrender.com/api/";
 const endpoint = "http://localhost:1337/api/";
 
-function fetchWithTimeout(resource, options) {
-  const { timeout = 7000 } = options;
-
-  return new Promise((resolve, reject) => {
-    const timer = setTimeout(
-      () => reject(new Error("Request timed out")),
-      timeout
-    );
-
-    fetch(resource, options).then((response) => {
-      clearTimeout(timer);
-      resolve(response);
-    }, reject);
-  });
-}
-
 export async function getArticle(title) {
   try {
-    const response = await fetchWithTimeout(
-      endpoint + "articles?filters[title][$eqi]=" + title,
-      { timeout: 7000 }
+    const response = await fetch(
+      endpoint + "articles?filters[title][$eqi]=" + title
     );
     const data = await response.json();
     const content = data.data[0].attributes.content;
@@ -34,9 +17,7 @@ export async function getArticle(title) {
 
 export async function getBulletin() {
   try {
-    const response = await fetchWithTimeout(endpoint + "bulletins", {
-      timeout: 7000,
-    });
+    const response = await fetch(endpoint + "bulletins");
     const data = await response.json();
 
     const dateStr = data.data[0].attributes.date;
@@ -63,12 +44,7 @@ export async function getBulletin() {
 
 export async function getImages(title) {
   try {
-    const response = await fetchWithTimeout(
-      endpoint + "photo-albums?populate[0]=images",
-      {
-        timeout: 7000,
-      }
-    );
+    const response = await fetch(endpoint + "photo-albums?populate[0]=images");
     const responseJson = await response.json();
     const allAlbums = responseJson.data;
     const targetAlbum = allAlbums.find(
