@@ -1,10 +1,9 @@
-// const endpoint = "https://gvc-cms.onrender.com/api/";
-const endpoint = "http://localhost:1337/api/";
+const endpoint = import.meta.env.ENDPOINT || "https://gvc-cms.onrender.com";
 
 export async function getArticle(title) {
   try {
     const response = await fetch(
-      endpoint + "articles?filters[title][$eqi]=" + title
+      endpoint + "/api/articles?filters[title][$eqi]=" + title
     );
     const data = await response.json();
     const content = data.data[0].attributes.content;
@@ -17,7 +16,7 @@ export async function getArticle(title) {
 
 export async function getBulletin() {
   try {
-    const response = await fetch(endpoint + "bulletins");
+    const response = await fetch(endpoint + "/api/bulletins");
     const data = await response.json();
 
     const dateStr = data.data[0].attributes.date;
@@ -44,16 +43,19 @@ export async function getBulletin() {
 
 export async function getImages(title) {
   try {
-    const response = await fetch(endpoint + "photo-albums?populate[0]=images");
+    const response = await fetch(
+      endpoint + "/api/photo-albums?populate[0]=images"
+    );
     const responseJson = await response.json();
     const allAlbums = responseJson.data;
     const targetAlbum = allAlbums.find(
       (object) => object.attributes.title == title
     );
     const imageDataArray = targetAlbum.attributes.images.data;
+    let imagesArray = [];
     if (imageDataArray) {
-      const imagesArray = imageDataArray.map(
-        (item) => "https://gvc-cms.onrender.com" + item.attributes.url
+      imagesArray = imageDataArray.map(
+        (item) => endpoint + item.attributes.url
       );
     }
 
