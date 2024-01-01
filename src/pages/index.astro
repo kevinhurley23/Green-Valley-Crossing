@@ -19,23 +19,21 @@ const homeCarousel = await getImages("home-carousel")
         style="background-image: url('img/GVC Hero dark.jpg')"
       >
       </div>
-      <div class="column">
-        <div class="container">
-          <h1>JOIN US ON SUNDAY</h1>
-          <div class="no-margin">
-            <p>75 Railroad Street</p>
-            <p>Putnam, CT 06260</p>
-          </div>
-          <p>In-person and online @ 10 AM</p>
-          <ButtonGroup
-            style="bg-white"
-            buttons={[
-              { text: "Watch Live", href: "https://live.gvc.church/" },
-              { text: "I'm New", href: "/im-new" },
-              { text: "Bulletin", href: "/bulletin" },
-            ]}
-          />
+      <div class="container">
+        <h1>JOIN US ON SUNDAY</h1>
+        <div class="no-margin">
+          <p>75 Railroad Street</p>
+          <p>Putnam, CT 06260</p>
         </div>
+        <p>In-person and online @ 10 AM</p>
+        <ButtonGroup
+          style="bg-white"
+          buttons={[
+            { text: "Watch Live", href: "https://live.gvc.church/" },
+            { text: "I'm New", href: "/im-new" },
+            { text: "Bulletin", href: "/bulletin" },
+          ]}
+        />
       </div>
     </section>
     <section id="welcome-section">
@@ -101,6 +99,10 @@ const homeCarousel = await getImages("home-carousel")
     background-attachment: fixed;
     color: white;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 0;
     #navbar-foreground {
       height: 80px;
       width: 100%;
@@ -111,15 +113,6 @@ const homeCarousel = await getImages("home-carousel")
       position: sticky;
       top: 0;
       z-index: 3;
-      &.gray {
-      }
-    }
-    .column {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      height: 88%;
-      padding: 3rem 0;
     }
     .container {
       z-index: 1;
@@ -127,6 +120,7 @@ const homeCarousel = await getImages("home-carousel")
     h1 {
       font-size: clamp(3rem, 9vw, 6rem);
       text-align: center;
+      margin-top: 1rem;
       margin-bottom: clamp(2rem, 5vw, 4rem);
       @media (max-width: $tablet) {
         margin-top: 0;
@@ -142,15 +136,6 @@ const homeCarousel = await getImages("home-carousel")
     #welcome-text {
       font-size: clamp(1.25rem, 5vw, 2.5rem);
       line-height: 1.4;
-    }
-  }
-  #image-carousel {
-    width: 100%;
-    box-sizing: border-box;
-    img {
-      width: 100%;
-      aspect-ratio: 16/9;
-      object-fit: cover;
     }
   }
   #contact-section {

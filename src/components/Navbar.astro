@@ -1,105 +1,117 @@
 ---
+import NavItems from "./Nav-Items.astro";
+
 const tallNav = 180;
 const shortNav = 80;
 ---
 
 <div id="navbar-background"></div>
-<div id="desktop-nav">
-  <a href="/">Home</a>
-  <a href="/#welcome-section">Welcome</a>
-  <a href="/#contact-section">Contact Us</a>
-  <a href="/" id="nav-img-link">
-    <img src="img/GVC Logo.png" alt="Green Valley Crossing logo" id="logo" />
-  </a>
-  <div class="folder">
-    <a href="/our-story">About Us</a>
-    <div class="sub-menu">
-      <a href="/our-leaders">Our Leaders</a>
-      <a href="/our-story">Our Story</a>
-      <a href="/our-beliefs">Our Beliefs</a>
-      <a href="/our-mission">Our Mission</a>
-    </div>
-  </div>
-  <div class="folder">
-    <a href="">Plan Your Visit</a>
-    <div class="sub-menu">
-      <a href="">What to Expect</a>
-      <a href="">Crossing Kids</a>
-      <a href="">Register for Check-In</a>
-    </div>
-  </div>
-  <div class="folder">
-    <a href="/im-new">Connect</a>
-    <div class="sub-menu">
-      <a href="im-new">I'm New</a>
-      <a href="">Prayer Requests</a>
-      <a href="">Events</a>
-      <a href="">Groups</a>
-      <a href="">Women</a>
-      <a href="">Giving</a>
-      <a href="/bulletin">Bulletin</a>
-      <a href="">Sermons</a>
-      <a href="">Blog</a>
-    </div>
-  </div>
+<div class="navbar desktop">
+  <NavItems />
 </div>
 <div id="mobile-toggle-container">
   <div class="container">
     <i id="mobile-toggle" class="fa-solid fa-bars"></i>
   </div>
 </div>
-<div id="mobile-nav">
+<div class="navbar mobile">
   <div class="container">
-    <a href="/">Home</a>
-    <a href="/#welcome-section">Welcome</a>
-    <a href="/#contact-section">Contact Us</a>
-    <div class="folder">
-      <p>About Us</p>
-      <p class="caret">&#62;</p>
-      <div class="sub-menu" style="display: none;">
-        <a href="">Our Leaders</a>
-        <a href="/our-story">Our Story</a>
-        <a href="/our-beliefs">Our Beliefs</a>
-        <a href="">Our Mission</a>
-      </div>
-    </div>
-    <div class="folder">
-      <p>Plan Your Visit</p>
-      <p class="caret">&#62;</p>
-      <div class="sub-menu" style="display: none;">
-        <a href="">What to Expect</a>
-        <a href="">Crossing Kids</a>
-        <a href="">Register for Check-In</a>
-      </div>
-    </div>
-    <div class="folder">
-      <p>Connect</p>
-      <p class="caret">&#62;</p>
-      <div class="sub-menu" style="display: none;">
-        <a href="im-new">I'm New</a>
-        <a href="">Prayer Requests</a>
-        <a href="">Events</a>
-        <a href="">Groups</a>
-        <a href="">Women</a>
-        <a href="">Giving</a>
-        <a href="/bulletin">Bulletin</a>
-        <a href="">Sermons</a>
-        <a href="">Blog</a>
-      </div>
-    </div>
+    <NavItems />
   </div>
 </div>
 
-<style lang="scss">
+<style is:global lang="scss">
   @import "../styles/_variables.scss";
-
-  a,
-  p {
-    color: white;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-weight: 500;
-  }
+  
+  .navbar {
+    a, p {
+      color: white;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    &.desktop {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem;
+      position: fixed;
+      top: 0;
+      z-index: 10;
+      width: 100%;
+      box-sizing: border-box;
+      a:hover {
+        color: $gray2;
+      }
+      a:after {
+        content: "";
+        height: 5px;
+        display: block;
+        visibility: hidden;
+      }
+      #nav-img-link {
+        @media screen and (max-width: $tablet) {
+          display: none;
+        }
+        #logo {
+          width: 300px;
+        }
+      }
+      .sub-menu {
+        display: none;
+        position: absolute;
+        left: -10px;
+        background-color: $gray5;
+        width: auto;
+        padding: 5px 15px 15px;
+        a {
+          display: block;
+          margin-top: 10px;
+          width: 100%;
+          white-space: nowrap;
+        }
+      }
+      .folder {
+        position: relative;
+        &:hover .sub-menu {
+          display: block;
+        }
+      }
+    }
+    &.mobile {
+      position: absolute;
+      z-index: 9;
+      background: linear-gradient($gray5, $gray4);
+      width: 100%;
+      padding: 3rem 0;
+      font-size: min(2rem, 8vw);
+      @media screen and (min-width: $mobile) {
+        display: none;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+      p {
+        margin: 0;
+        display: inline;
+      }
+      .caret {
+        margin-left: 10px;
+        display: inline-block;
+        transition: 0.3s;
+      }
+      .sub-menu {
+        a {
+          display: block;
+          font-size: 0.7em;
+          margin-top: 0.5rem;
+        }
+      }
+    }
+  } 
 
   #navbar-background {
     background-color: $gray5;
@@ -108,62 +120,7 @@ const shortNav = 80;
     width: 100%;
     z-index: 0;
   }
-  #desktop-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    padding: 2rem;
-    position: fixed;
-    top: 0;
-    z-index: 10;
-    width: 100%;
-    box-sizing: border-box;
-    @media screen and (max-width: $mobile) {
-      display: none;
-    }
-    a:hover {
-      color: $gray2;
-    }
-    a:after {
-      content: "";
-      height: 5px;
-      display: block;
-      visibility: hidden;
-    }
-    #nav-img-link {
-      @media screen and (max-width: $tablet) {
-        display: none;
-      }
-      #logo {
-        width: 300px;
-        // @media screen and (max-width: $tablet) {
-        //   display: none;
-        //   width: 0px;
-        // }
-      }
-    }
-    .sub-menu {
-      display: none;
-      position: absolute;
-      left: -10px;
-      background-color: $gray5;
-      width: auto;
-      padding: 5px 15px 15px;
-      a {
-        display: block;
-        margin-top: 10px;
-        width: 100%;
-        white-space: nowrap;
-      }
-    }
-    .folder {
-      position: relative;
-      &:hover .sub-menu {
-        display: block;
-      }
-    }
-  }
+  
   #mobile-toggle {
     color: white;
     font-size: 28px;
@@ -174,39 +131,15 @@ const shortNav = 80;
       display: none;
     }
   }
-  #mobile-nav {
-    position: fixed;
-    z-index: 20;
-    background: linear-gradient($gray5, $gray4);
-    width: 100%;
-    padding: 3rem 0;
-    @media screen and (min-width: $mobile) {
-      display: none;
+
+  @media (max-width: $mobile) {
+    .desktop {
+      display: none !important;
     }
-    .container {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-    a,
-    p {
-      font-size: min(2rem, 8vw);
-    }
-    p {
-      margin: 0;
-      display: inline;
-    }
-    .caret {
-      margin-left: 10px;
-      display: inline-block;
-      transition: 0.3s;
-    }
-    .sub-menu {
-      a {
-        display: block;
-        font-size: 1.5rem;
-        margin-top: 0.5rem;
-      }
+  }
+  @media (min-width: $mobile) {
+    .mobile {
+      display: none !important;
     }
   }
 </style>
@@ -216,8 +149,8 @@ const shortNav = 80;
   const logoLink = document.querySelector("#nav-img-link")
   const background = document.querySelector("#navbar-background");
   const toggle = document.querySelector("#mobile-toggle");
-  const mobileNav = document.querySelector("#mobile-nav");
-  const folders = document.querySelectorAll("#mobile-nav .folder");
+  const mobileNav = document.querySelector(".navbar.mobile");
+  const folders = document.querySelectorAll(".navbar.mobile .folder");
   const time = 300;
   let animationInProgress = false;
   let menuIsOpen = false;
@@ -230,6 +163,17 @@ const shortNav = 80;
   const mobileNavHeight = mobileNav.offsetHeight;
   mobileNav.style.top = -mobileNavHeight - shortNav + "px";
   mobileNav.style.removeProperty("display");
+
+  function closeFolders() {
+    document.querySelectorAll(".navbar.mobile .sub-menu").forEach(function(node) {
+      node.style.display = "none";
+    });
+    document.querySelectorAll(".navbar.mobile .caret").forEach(function(node) {
+      node.style.transform = "rotate(0deg)";
+    });
+  }
+
+  closeFolders();
 
   function hideLogo() {
     animationInProgress = true;
@@ -288,7 +232,6 @@ const shortNav = 80;
   let hasTriggered = false;
   window.addEventListener('resize', function() {
     if (window.innerWidth > 800 && !hasTriggered) {
-      console.log(window.scrollY);
       background.style.zIndex = "0";
       if (window.scrollY > 0) {
         logoLink.style.display = "none"
@@ -314,9 +257,9 @@ const shortNav = 80;
       setTimeout(() => {
         mobileNav.style.top = -mobileNavHeight + "px";
       }, time * 0.9);
-      document.querySelectorAll(".sub-menu").forEach(function(node) {
-        node.style.display = "none";
-      });
+      // mobileNav.style.height = "0";
+      // mobileNav.style.padding = "0";
+      closeFolders();
     } else {
       // open menu
       menuIsOpen = true;
@@ -327,6 +270,8 @@ const shortNav = 80;
         mobileNav.style.top = shortNav + "px";
         background.style.zIndex = "5";
       }, time * 0.8);
+      // mobileNav.style.height = "auto";
+      // mobileNav.style.padding = "3rem 0"
     }
   });
 
