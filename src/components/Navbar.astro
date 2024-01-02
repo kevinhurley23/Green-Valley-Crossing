@@ -22,9 +22,10 @@ const shortNav = 80;
 
 <style is:global lang="scss">
   @import "../styles/_variables.scss";
-  
+
   .navbar {
-    a, p {
+    a,
+    p {
       color: white;
       text-decoration: none;
       text-transform: uppercase;
@@ -80,11 +81,15 @@ const shortNav = 80;
       }
     }
     &.mobile {
-      position: absolute;
+      position: fixed;
       z-index: 9;
       background: linear-gradient($gray5, $gray4);
-      width: 100%;
-      padding: 3rem 0;
+      top: 80px;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      overflow: auto;
+      padding: 1rem 0 3rem;
       font-size: min(2rem, 8vw);
       @media screen and (min-width: $mobile) {
         display: none;
@@ -111,7 +116,7 @@ const shortNav = 80;
         }
       }
     }
-  } 
+  }
 
   #navbar-background {
     background-color: $gray5;
@@ -120,7 +125,7 @@ const shortNav = 80;
     width: 100%;
     z-index: 0;
   }
-  
+
   #mobile-toggle {
     color: white;
     font-size: 28px;
@@ -146,29 +151,30 @@ const shortNav = 80;
 
 <script define:vars={{ shortNav, tallNav }}>
   const logo = document.querySelector("#logo");
-  const logoLink = document.querySelector("#nav-img-link")
+  const logoLink = document.querySelector("#nav-img-link");
   const background = document.querySelector("#navbar-background");
   const toggle = document.querySelector("#mobile-toggle");
   const mobileNav = document.querySelector(".navbar.mobile");
   const folders = document.querySelectorAll(".navbar.mobile .folder");
-  const time = 300;
+  const time = 200;
   let animationInProgress = false;
   let menuIsOpen = false;
 
   window.innerWidth > 1150
     ? (background.style.height = tallNav + "px")
     : (background.style.height = shortNav + "px");
-  
-  mobileNav.style.display = "block";
+
   const mobileNavHeight = mobileNav.offsetHeight;
   mobileNav.style.top = -mobileNavHeight - shortNav + "px";
-  mobileNav.style.removeProperty("display");
+  mobileNav.style.bottom = "auto";
 
   function closeFolders() {
-    document.querySelectorAll(".navbar.mobile .sub-menu").forEach(function(node) {
-      node.style.display = "none";
-    });
-    document.querySelectorAll(".navbar.mobile .caret").forEach(function(node) {
+    document
+      .querySelectorAll(".navbar.mobile .sub-menu")
+      .forEach(function (node) {
+        node.style.display = "none";
+      });
+    document.querySelectorAll(".navbar.mobile .caret").forEach(function (node) {
       node.style.transform = "rotate(0deg)";
     });
   }
@@ -188,7 +194,7 @@ const shortNav = 80;
     animation.addEventListener("finish", () => {
       logo.style.width = "0px";
       logo.style.opacity = 0;
-      
+
       background.style.height = shortNav + "px";
     });
     setTimeout(() => {
@@ -230,11 +236,11 @@ const shortNav = 80;
   });
 
   let hasTriggered = false;
-  window.addEventListener('resize', function() {
+  window.addEventListener("resize", function () {
     if (window.innerWidth > 800 && !hasTriggered) {
       background.style.zIndex = "0";
       if (window.scrollY > 0) {
-        logoLink.style.display = "none"
+        logoLink.style.display = "none";
       } else {
         logoLink.style.removeProperty("display");
         logo.removeAttribute("style");
@@ -245,7 +251,6 @@ const shortNav = 80;
     }
   });
 
-
   toggle.addEventListener("click", function () {
     if (menuIsOpen) {
       // close menu
@@ -253,25 +258,23 @@ const shortNav = 80;
       toggle.classList.remove("fa-x");
       toggle.classList.add("fa-bars");
       background.style.zIndex = "0";
+      mobileNav.style.bottom = "auto";
       mobileNav.animate({ top: -mobileNavHeight + "px" }, time);
       setTimeout(() => {
         mobileNav.style.top = -mobileNavHeight + "px";
       }, time * 0.9);
-      // mobileNav.style.height = "0";
-      // mobileNav.style.padding = "0";
       closeFolders();
     } else {
       // open menu
       menuIsOpen = true;
       toggle.classList.remove("fa-bars");
       toggle.classList.add("fa-x");
-      mobileNav.animate({ top: shortNav + "px" }, time);
+      mobileNav.animate({ top: shortNav + "px", bottom: "0" }, time);
       setTimeout(() => {
         mobileNav.style.top = shortNav + "px";
+        mobileNav.style.bottom = "0";
         background.style.zIndex = "5";
       }, time * 0.8);
-      // mobileNav.style.height = "auto";
-      // mobileNav.style.padding = "3rem 0"
     }
   });
 
