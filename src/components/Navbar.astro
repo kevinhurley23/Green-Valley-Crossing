@@ -1,5 +1,5 @@
 ---
-import NavItems from "./Nav-Items.astro";
+import NavFolders from "./NavFolders.astro";
 
 const tallNav = 180;
 const shortNav = 80;
@@ -7,7 +7,13 @@ const shortNav = 80;
 
 <div id="navbar-background"></div>
 <div class="navbar desktop">
-  <NavItems />
+  <a href="/">Home</a>
+  <a href="/#welcome-section">Welcome</a>
+  <a href="/#contact-section">Contact Us</a>
+  <a href="/" id="nav-img-link" class="desktop">
+    <img src="img/GVC Logo.png" alt="Green Valley Crossing logo" id="logo" />
+  </a>
+  <NavFolders />
 </div>
 <div id="mobile-toggle-container">
   <div class="container">
@@ -15,8 +21,11 @@ const shortNav = 80;
   </div>
 </div>
 <div class="navbar mobile">
-  <div class="container">
-    <NavItems />
+    <div class="container">
+      <a href="/">Home</a>
+    <a href="/#welcome-section">Welcome</a>
+    <a href="/#contact-section">Contact Us</a>
+    <NavFolders />
   </div>
 </div>
 
@@ -91,9 +100,6 @@ const shortNav = 80;
       overflow: auto;
       padding: 1rem 0 3rem;
       font-size: min(2rem, 8vw);
-      @media screen and (min-width: $mobile) {
-        display: none;
-      }
       .container {
         display: flex;
         flex-direction: column;
@@ -138,13 +144,13 @@ const shortNav = 80;
   }
 
   @media (max-width: $mobile) {
-    .desktop {
-      display: none !important;
+    .navbar.desktop, .navbar .desktop {
+      display: none;
     }
   }
   @media (min-width: $mobile) {
-    .mobile {
-      display: none !important;
+    .navbar.mobile, .navbar .mobile {
+      display: none;
     }
   }
 </style>
@@ -164,10 +170,6 @@ const shortNav = 80;
     ? (background.style.height = tallNav + "px")
     : (background.style.height = shortNav + "px");
 
-  const mobileNavHeight = mobileNav.offsetHeight;
-  mobileNav.style.top = -mobileNavHeight - shortNav + "px";
-  mobileNav.style.bottom = "auto";
-
   function closeFolders() {
     document
       .querySelectorAll(".navbar.mobile .sub-menu")
@@ -180,6 +182,13 @@ const shortNav = 80;
   }
 
   closeFolders();
+
+  mobileNav.style.display = "block";
+  mobileNav.style.bottom = "auto";
+  const mobileNavHeight = mobileNav.offsetHeight;
+  console.log(mobileNavHeight);
+  mobileNav.style.top = -mobileNavHeight - shortNav + "px";
+  mobileNav.style.removeProperty("display");
 
   function hideLogo() {
     animationInProgress = true;
