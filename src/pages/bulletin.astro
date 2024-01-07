@@ -1,25 +1,79 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { getBulletin } from "../api";
-
-const content = await getBulletin();
-const date = content[0];
-const serviceOrder = content[1];
-const announcements = content[2];
 ---
 <Layout title="Bulletin - Green Valley Crossing">
   <main>
     <div class="container">
-      <h2 id="date">{date}</h2>
+      <h1 id="date">January 7, 2024</h1>
       <img src="img/gvc black and white header image.jpg" alt="">
       <div class="two-column">
         <div id="service-order">
           <h2>Order of Service</h2>
-          <div class="bulletin-text" set:html={serviceOrder}></div>
+          <div class="bulletin-text">
+            <h3>
+                Worship Through Song
+            </h3>
+            <p>
+                Behold Our God
+            </p>
+            <p>
+                God Of This City
+            </p>
+            <p>
+                God Of Revival
+            </p>
+            <h3>
+                Sermon
+            </h3>
+            <p>
+                Matthew 25:14-30
+            </p>
+            <p>
+                The Parable Of The Talents
+            </p>
+            <h3>
+                Response &amp; Benediction
+            </h3>
+            <p>
+                Here Again
+            </p>
+            <h3>
+                Worship Through Giving
+            </h3>
+          </div>
         </div>
         <div id="announcements">
           <h2>Announcements</h2>
-          <div class="bulletin-text" set:html={announcements}></div>
+          <div class="bulletin-text">
+            <h3>
+                SUNDAY MORNING PRAYER:
+            </h3>
+            <p>
+                Join us each Sunday at 9:15 to pray for revival in our hearts, the Church, our nation, and world. &nbsp;Prayer is the essential foundation for all we do at GVC. &nbsp;If you would like prayer for anything, then please join us!
+            </p>
+            <h3>
+                Update on Sign-Ups - All volunteers
+            </h3>
+            <p>
+                A hard copy of the schedule with your assignments is on the back tables. &nbsp;I had to move a few of you to areas where there was an absolute necessity and I felt you were perfect for the slot. &nbsp;If you really want to be where you originally signed up please let me know.
+            </p>
+            <p>
+                We still need people for some key areas. &nbsp;I updated the <a target="_blank" rel="noopener noreferrer" href="https://www.signupgenius.com/go/904054DA5AE23ABFD0-green">sign in sheet</a> so if you haven’t signed up please consider filling in one of the gaps.
+            </p>
+            <h4>
+                WE NEED SOME EASY UP 10’ POP UP TENTS.
+            </h4>
+            <p>
+                PLEASE TEXT ME AT 860-942-4183 IF YOU HAVE ONE WE CAN BORROW.
+            </p>
+            <h4>
+                <br>
+                FLOURISH-THURSDAY SEPTEMBER 21, AT 6:00PM
+            </h4>
+            <p>
+                Special event being announced today
+            </p>
+          </div>
         </div>
       </div>
     </div>

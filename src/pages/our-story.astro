@@ -1,15 +1,53 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { getArticle } from "../api";
-
-const content = await getArticle("our-story");
 ---
 
 <Layout title="Our Story - Green Valley Crossing">
   <main>
     <div class="container default-text">
       <h1>Our Story</h1>
-      <div id="our-story" set:html={content}></div>
+      <div id="our-story">
+        <p>
+            New England has a rich history of faith. Yet, as one looks over the landscape of New England today, religion is far from the forefront of most people’s minds. All six New England states are in the top ten least religious in America (Gallup, 2012). The cultural context contains many different world views, philosophies, and lifestyles.
+        </p>
+        <p>
+            In the mid 2000s, the Baptist Convention of New England, along with the North American Mission Board (SBC), began to converse about beginning a host of new, relevant, Bible-teaching churches all across New England. These churches would prove to be outposts of discovery for individuals with little to no experience in established churches. Several families in the Putnam area began to dream about a new church that would make a difference in the lives of local people. They completed demographics studies, questioned Putnam’s residents about the town’s greatest needs, and started to pursue a church planter who would come lead them.
+        </p>
+        <p>
+            After many years of prayer, study, and trials, the original team of people began to be discouraged. They wondered whether God actually wanted to start a new church. That was, until Riley Prather visited the area with a small team of students in 2011 and caught a vision to serve the religiously unengaged of Connecticut. During a return trip in October, God led Riley and his wife, Kassie, to Putnam, where they fell in love with the small-town charm and the festive, artistic atmosphere. After being assessed and meeting with the believers who had worked so hard all those years, it was clear that Riley was called to plant the church. After he graduated from seminary the following spring, Riley and Kassie packed up their belongings and moved across the country.
+        </p>
+        <p>
+            In August of 2012, 9 people met for a Sunday night Bible study on the second floor function room of the Victoria Station Cafe in downtown Putnam. God began to birth a vision for Green Valley Crossing. The church would impact individual lives through believers sold out to God’s mission. They desired to meet the real needs of people, showing the love of Christ at all costs. By Easter 2013, the small Bible study had grown to 20 steady attenders who were preparing to finally launch a new church.
+        </p>
+        <img src="img/our-story/our-story-1.jpg">
+        <p>
+            <span style="font-size:14px;">Sunday night Bible study at Victoria Station Cafe - August 2013</span>
+        </p>
+        <p>
+            On September 8, 2013, Green Valley Crossing held their first public Sunday morning worship service. Since they were new and lacked the financial means of more established churches, they rented space from Putnam’s middle school. 73 people attended that day and heard the life-changing message that Jesus overcomes the darkness in the world.
+        </p>
+        <img src="img/our-story/our-story-2.png">
+        <p>
+            <span style="font-size:14px;">Launch Sunday - September 8, 2013</span>
+        </p>
+        <p>
+            The church continued to grow, and by their first birthday, God blessed them with a building they could call home. After months of renovations, GVC’s launch service on Front Street was held on December 14, 2014. As the new year dawned, so did a whole new era of ministry.
+        </p>
+        <img src="img/our-story/our-story-3.jpeg">
+        <p>
+            The ministry at the Front Street location blossomed. People heard a life-changing message each week as new ministries grew. Within a year the church was out of room. We launched a second service in order to open up space for more people to encounter Christ and began investigating a new venue. The church expanded to around 125 people.
+        </p>
+        <p>
+            During the Covid-19 pandemic, we cancelled in-person services and shifted to an online only gathering. While those days were difficult, it forced us get out of our comfort zone and see new ways of spreading the gospel. The church would re-gather five months later… but not at 95 Front Street.
+        </p>
+        <p>
+            Within those five months, GVC finally closed on a real-estate transaction that had been in the works for nearly two years. After many roadblocks along the way, the church settled into a new home at 75 Railroad Street, our current location. This 12,000 sq ft facility would allow GVC to gather in one service (socially distanced at the time), and would allow our kids ministry to be located in a larger, more secure area. The church went from a maximum capacity of 125 to over 400 at the new location. In the spring of 2022, GVC hosted its second largest Easter attendance ever, only trailing Easter at the Bradley Theater (2017).
+        </p>
+        <img src="img/our-story/our-story-4.jpg">
+        <p>
+            Our story is still being written. As the Lord calls people from all over the Quiet Corner to plant their lives at Green Valley Crossing, we will see souls transformed as we make disciples. We long for the day when every town in northeastern Connecticut has access to the gospel, and new churches are planted for the glory of God.
+        </p>
+      </div>
     </div>
   </main>
 </Layout>

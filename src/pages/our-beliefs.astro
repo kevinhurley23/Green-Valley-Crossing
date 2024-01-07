@@ -1,15 +1,57 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { getArticle } from "../api";
-
-const content = await getArticle("our-beliefs");
 ---
 
 <Layout title="Our Story - Green Valley Crossing">
   <main>
     <div class="container default-text">
       <h1>Our Beliefs</h1>
-      <div set:html={content}></div>
+      <div>
+        <p>
+            Green Valley Crossing, a church in cooperation with the SBC, has adopted the Baptist Faith and Message (2000) as their Statement of Belief. It can be found in its entirety at <a target="_blank" rel="noopener noreferrer" href="https://bfm.sbc.net/bfm2000/">Southern Baptist Faith &amp; Message</a>
+        </p>
+        <p>
+            To give you a better idea as to what The Crossing believes/teaches,
+        </p>
+        <ul>
+            <li>
+                We affirm that the Bible holds authority in the life of a Christian, so we preach it faithfully.
+            </li>
+            <li>
+                We believe that God the Father is sovereignly working out His will in the world.
+            </li>
+            <li>
+                We believe that Jesus, the perfect Son of God, died for the sin that corrupted life.
+            </li>
+            <li>
+                We agree that all people everywhere are called to trust in Christ and turn from their sin as part of their salvation.
+            </li>
+            <li>
+                We confess that the Spirit of God is ruling and reigning in the lives of His people.
+            </li>
+            <li>
+                We believe that the Church is God’s chosen institution to proclaim His message to all of creation.
+            </li>
+            <li>
+                We affirm that salvation is by grace through faith in Christ, and that believers have a job to do as a result.
+            </li>
+            <li>
+                We think that church should be an expression of joy, not a funeral service, so we make sure it’s relevant to the modern age.
+            </li>
+            <li>
+                We believe the Church should graciously engage the culture rather than run from it.
+            </li>
+            <li>
+                We understand that every individual is on a unique journey, so we welcome all types of people to make discoveries about Jesus with us.
+            </li>
+            <li>
+                We bank on the fact that life has no purpose and meaning apart from a relationship with God, so we unashamedly proclaim the grace-filled, life-changing message of Jesus to the world.
+            </li>
+            <li>
+                We understand that Jesus will one day come back to judge this world and everyone in it.
+            </li>
+        </ul>
+      </div>
     </div>
   </main>
 </Layout>

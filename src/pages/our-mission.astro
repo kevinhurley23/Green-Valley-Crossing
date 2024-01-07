@@ -1,15 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { getArticle } from "../api";
-
-const content = await getArticle("our-mission");
 ---
 
 <Layout title="Our Story - Green Valley Crossing">
   <main>
     <div class="container default-text">
       <h1>Our Mission</h1>
-      <div set:html={content}></div>
+      <p>
+        Green Valley Crossing is a church that loves Jesus, teaches the Bible, and regularly sees lives changed. We don't expect you to have everything figured out before you show up. People from all walks of life have found Green Valley Crossing to be a church where they could discover Jesus at their own pace and grow in relationship with Him. If you’re reading this right now, you’re welcome at GVC, no matter what.
+      </p>
     </div>
   </main>
 </Layout>

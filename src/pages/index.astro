@@ -2,10 +2,13 @@
 import Layout from "../layouts/Layout.astro";
 import ButtonGroup from "../components/ButtonGroup.astro";
 import Carousel from "../components/Carousel.astro";
-import { getArticle, getImages } from "../api";
 
-const welcome = await getArticle("welcome");
-const homeCarousel = await getImages("home-carousel")
+const homeCarousel = [
+  'img/home-carousel/IMG_0603.jpeg',
+  'img/home-carousel/IMG_2097.jpeg',
+  'img/home-carousel/IMG_2112.jpeg',
+  'img/home-carousel/IMG_2117.jpeg'
+  ]
 ---
 
 <Layout>
@@ -38,7 +41,11 @@ const homeCarousel = await getImages("home-carousel")
     </section>
     <section id="welcome-section">
       <div class="container">
-        <div id="welcome-text" set:html={welcome} />
+        <div id="welcome-text">
+          <p>
+            Welcome to the online home of Green Valley Crossing. We know that connecting with a new church can be a daunting task, and we're glad that you are here. As you browse this site, our prayer is that you would discover how you can fit into God's story for the quiet corner of Connecticut. We believe He has a great plan for your life, and we're excited to help you experience Jesus in a fresh way.
+          </p>
+        </div>
         <ButtonGroup
           style="bg-white bd-black"
           buttons={[
@@ -47,16 +54,16 @@ const homeCarousel = await getImages("home-carousel")
               href: "/our-beliefs",
             },
             {
-              text: "Meet Our Leaders",
-              href: "/our-leaders",
+              text: "Learn Our History",
+              href: "/our-story",
             },
             {
               text: "Plan Your Visit",
               href: "/what-to-expect",
             },
             {
-              text: "Take Your Next Step",
-              href: "/next-steps",
+              text: "Kids Ministry",
+              href: "/crossing-kids",
             },
           ]}
         />
